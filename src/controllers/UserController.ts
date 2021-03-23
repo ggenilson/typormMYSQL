@@ -15,7 +15,7 @@ export class UserController {
     const user = await getRepository(User).findOne(id);
 
     if (!user) {
-      res.send({ message: 'User not found' });
+      res.res.status(404).json({ message: 'User not found' });
     }
 
     return res.json(user);
@@ -35,7 +35,7 @@ export class UserController {
     const user = getRepository(User).findOne(id);
 
     if (user) {
-      res.send({ message: 'User not found' });
+      res.status(404).json({ message: 'User not found' });
     }
 
     getRepository(User).merge(user, req.body);
