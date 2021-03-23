@@ -66,9 +66,9 @@ export class UserController {
       res.status(404).json({ message: 'User not found' });
     }
 
-    const result = await getRepository(User).delete(id);
+    await getRepository(User).delete(id);
 
-    return res.json(result);
+    return res.json({ message: 'User removed with success' });
   }
 }
 
