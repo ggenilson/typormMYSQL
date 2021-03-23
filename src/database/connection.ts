@@ -15,7 +15,7 @@ export const connection = async () => {
     password: '',
     synchronize: true,
     entities: [User],
-    logging: false,
+    // logging: false,
   })
     .then((data) => {
       console.log('Database is now connected! ', data.name);
