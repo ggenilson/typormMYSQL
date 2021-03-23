@@ -1,16 +1,20 @@
 import 'reflect-metadata'
 import express from 'express';
-import morgan from 'morgan';
 import cors from 'cors';
-import { createConnection } from 'typeorm';
 
-const app = express();
+import routes from './routes';
 
-createConnection();
+import { connection } from './database/connection';
 
-//middlewares
-app.use(cors());
-app.use(morgan('dev'));
-app.use(express.json());
+async function mainServer() {
+  await connection();
+  
+  const app = express();
 
-app.listen(3000, () => console.log("Server is running!"));
+  //middlewares
+  app.use(cors());
+  app.use(express.json());
+  app.use(routes);
+
+  app.listen(3000, () => console.log("Server is running!"));
+}

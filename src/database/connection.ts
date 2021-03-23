@@ -10,9 +10,9 @@ export const connection = async () => {
     type: "mysql",
     host: "localhost",
     port: 3306,
+    database: 'typeormtest',
     username: "root",
     password: "",
-    database: 'typeormtest',
     synchronize: true,
     entities: ['./entities/**/*.ts'],
     logging: true
