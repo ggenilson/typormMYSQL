@@ -1,0 +1,8 @@
+{
+  "name": "typormMYSQL",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/ggenilson/typormMYSQL.git",
+  "author": "ggenilson <genilsonaraujo20002002@gmail.com>",
+  "license": "MIT"
+}
