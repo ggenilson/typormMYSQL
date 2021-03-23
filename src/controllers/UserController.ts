@@ -32,22 +32,24 @@ export class UserController {
   async update(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
 
-    const user = getRepository(User).findOne(id);
+    const user = await getRepository(User).findOne(id);
 
     if (!user) {
       res.status(404).json({ message: 'User not found' });
     }
 
-    const result = await getConnection()
-      .createQueryBuilder()
-      .update(User)
-      .set(req.body)
-      .where('id = :id', { id })
-      .execute();
+    const userUpdated = await getRepository(User).update(id, req.body);
 
-    getRepository(User).merge(user, req.body);
+    // const result = await getConnection()
+    //   .createQueryBuilder()
+    //   .update(User)
+    //   .set(req.body)
+    //   .where('id = :id', { id })
+    //   .execute();
 
-    const result = await getRepository(User).save();
+    // getRepository(User).merge(id, req.body);
+
+    const result = await getRepository(User).save(userUpdated);
 
     return res.json(result);
   }
