@@ -1,6 +1,6 @@
 import { Request, Response } from 'express';
 import { getRepository } from 'typeorm';
-import { User } from '../entities/User';
+import User from '../database/entities/User';
 
 export class UserController {
   async index (req: Request, res: Response): Promise<Response> {
