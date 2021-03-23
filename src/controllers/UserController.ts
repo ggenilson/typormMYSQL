@@ -28,6 +28,22 @@ export class UserController {
 
     return res.json(result);
   }
+
+  async update(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+
+    const user = getRepository(User).findOne(id);
+
+    if (user) {
+      res.send({ message: 'User not found' });
+    }
+
+    getRepository(User).merge(user, req.body);
+
+    const result = await getRepository(User).save();
+
+    return res.json(result);
+  }
 }
 
 export default new UserController();
