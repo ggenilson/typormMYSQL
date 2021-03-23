@@ -2,7 +2,7 @@ import { createConnection } from 'typeorm';
 
 import path from 'path';
 
-import User from './entities/User';
+// import User from './entities/User';
 
 path.resolve(__dirname, 'entities')
 export const connection = async () => { 
@@ -14,7 +14,7 @@ export const connection = async () => {
     password: "",
     database: 'typeormtest',
     synchronize: true,
-    entities: [User],
+    entities: ['./entities/**/*.ts'],
     logging: true
   })
   .then((data) => {
