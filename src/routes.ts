@@ -7,6 +7,7 @@ const routes = Router();
 routes.get('/users', UserController.index);
 routes.get('/users/:id', UserController.indexOne);
 routes.post('/createUser', UserController.create);
+routes.put('/updateUser/:id', UserController.update);
 // route.delete('/users', );
 
 export default routes;
