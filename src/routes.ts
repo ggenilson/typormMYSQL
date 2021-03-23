@@ -1,10 +1,12 @@
-import {Router} from 'express';
+import { Router } from 'express';
 
-const route = Router();
+import UserController from './controllers/UserController';
 
-route.get('/users', );
-route.post('/users', );
-route.put('/users', );
-route.delete('/users', );
+const routes = Router();
 
-export default route;
+routes.get('/users', UserController.index);
+// route.post('/users', );
+// route.put('/users', );
+// route.delete('/users', );
+
+export default routes;
