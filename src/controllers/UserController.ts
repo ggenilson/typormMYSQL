@@ -40,13 +40,6 @@ export class UserController {
 
     const userUpdated = await getRepository(User).update(id, req.body);
 
-    // const result = await getConnection()
-    //   .createQueryBuilder()
-    //   .update(User)
-    //   .set(req.body)
-    //   .where('id = :id', { id })
-    //   .execute();
-
     // getRepository(User).merge(id, req.body);
 
     const result = await getRepository(User).save(userUpdated);

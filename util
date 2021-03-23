@@ -1,0 +1,6 @@
+// const result = await getConnection()
+    //   .createQueryBuilder()
+    //   .update(User)
+    //   .set(req.body)
+    //   .where('id = :id', { id })
+    //   .execute();
