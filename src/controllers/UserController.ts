@@ -32,19 +32,29 @@ export class UserController {
   async update(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
 
-    const user = await getRepository(User).findOne(id);
+    try {
+      let user = await getRepository(User).findOne(id);
 
-    if (!user) {
-      res.status(404).json({ message: 'User not found' });
+      if (!user) {
+        res.status(404).json({ message: 'User not found' });
+      }
+
+      user = {
+        ...user,
+        ...req.body,
+      };
+
+      await getRepository(User).save({ ...user });
+
+      // getRepository(User).merge(id, req.body
+      // const userUpdated = await getRepository(User).findOne(id);
+
+      // const result = await getRepository(User).save(userUpdated);
+
+      return res.json(user);
+    } catch (err) {
+      throw new Error('An error ocurred');
     }
-
-    const userUpdated = await getRepository(User).update(id, req.body);
-
-    // getRepository(User).merge(id, req.body);
-
-    // const result = await getRepository(User).save(userUpdated);
-
-    return res.json(userUpdated);
   }
 
   async delete(req: Request, res: Response): Promise<Response> {
