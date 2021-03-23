@@ -42,9 +42,9 @@ export class UserController {
 
     // getRepository(User).merge(id, req.body);
 
-    const result = await getRepository(User).save(userUpdated);
+    // const result = await getRepository(User).save(userUpdated);
 
-    return res.json(result);
+    return res.json(userUpdated);
   }
 
   async delete(req: Request, res: Response): Promise<Response> {
