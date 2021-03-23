@@ -45,9 +45,9 @@ export class UserController {
       .where('id = :id', { id })
       .execute();
 
-    // getRepository(User).merge(user, req.body);
+    getRepository(User).merge(user, req.body);
 
-    // const result = await getRepository(User).save();
+    const result = await getRepository(User).save();
 
     return res.json(result);
   }
