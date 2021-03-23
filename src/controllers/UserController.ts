@@ -34,7 +34,7 @@ export class UserController {
 
     const user = getRepository(User).findOne(id);
 
-    if (user) {
+    if (!user) {
       res.status(404).json({ message: 'User not found' });
     }
 
