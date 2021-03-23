@@ -12,9 +12,13 @@ export class UserController {
   async indexOne(req: Request, res: Response): Promise<Response> {
     const { id } = req.params;
 
-    const users = await getRepository(User).findOne(id);
+    const user = await getRepository(User).findOne(id);
 
-    return res.json(users);
+    if (!user) {
+      res.send({ message: 'User not found' });
+    }
+
+    return res.json(user);
   }
 
   async create(req: Request, res: Response): Promise<Response> {
