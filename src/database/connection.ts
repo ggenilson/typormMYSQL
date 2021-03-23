@@ -7,8 +7,12 @@ import User from './entities/User';
 path.resolve(__dirname, 'entities')
 export const connection = async () => { 
   return createConnection({
-    type: 'sqlite',
-    database: path.resolve(__dirname, 'db.sqlite'),
+    type: "mysql",
+    host: "localhost",
+    port: 3306,
+    username: "root",
+    password: "",
+    database: 'typeormtest',
     synchronize: true,
     entities: [User],
     logging: true
