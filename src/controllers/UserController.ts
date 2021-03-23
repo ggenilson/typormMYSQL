@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { getRepository } from 'typeorm';
+import { getRepository, getConnection } from 'typeorm';
 import User from '../database/entities/User';
 
 export class UserController {
@@ -15,7 +15,7 @@ export class UserController {
     const user = await getRepository(User).findOne(id);
 
     if (!user) {
-      res.res.status(404).json({ message: 'User not found' });
+      res.status(404).json({ message: 'User not found' });
     }
 
     return res.json(user);
@@ -38,9 +38,16 @@ export class UserController {
       res.status(404).json({ message: 'User not found' });
     }
 
-    getRepository(User).merge(user, req.body);
+    const result = await getConnection()
+      .createQueryBuilder()
+      .update(User)
+      .set(req.body)
+      .where('id = :id', { id })
+      .execute();
 
-    const result = await getRepository(User).save();
+    // getRepository(User).merge(user, req.body);
+
+    // const result = await getRepository(User).save();
 
     return res.json(result);
   }
