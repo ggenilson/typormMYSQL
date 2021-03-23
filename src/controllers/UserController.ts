@@ -3,10 +3,18 @@ import { getRepository } from 'typeorm';
 import User from '../database/entities/User';
 
 export class UserController {
-  async index (req: Request, res: Response): Promise<Response> {
+  async index(req: Request, res: Response): Promise<Response> {
     const users = await getRepository(User).find();
 
     return res.json(users);
+  }
+
+  async create(req: Request, res: Response): Promise<Response> {
+    const user = getRepository(User).create(req.body);
+
+    const result = await getRepository(User).save(user);
+
+    return res.json(result);
   }
 }
 

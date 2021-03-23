@@ -5,7 +5,7 @@ import UserController from './controllers/UserController';
 const routes = Router();
 
 routes.get('/users', UserController.index);
-// route.post('/users', );
+routes.post('/createUser', UserController.create);
 // route.put('/users', );
 // route.delete('/users', );
 

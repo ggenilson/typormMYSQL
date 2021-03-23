@@ -1,4 +1,4 @@
-import 'reflect-metadata'
+import 'reflect-metadata';
 import express from 'express';
 import cors from 'cors';
 
@@ -8,7 +8,7 @@ import { connection } from './database/connection';
 
 async function mainServer() {
   await connection();
-  
+
   const app = express();
 
   //middlewares
@@ -16,7 +16,7 @@ async function mainServer() {
   app.use(express.json());
   app.use(routes);
 
-  app.listen(3000, () => console.log("Server is running!"));
+  app.listen(3333, () => console.log('Server is running!'));
 }
 
 mainServer();
