@@ -9,6 +9,14 @@ export class UserController {
     return res.json(users);
   }
 
+  async indexOne(req: Request, res: Response): Promise<Response> {
+    const { id } = req.params;
+
+    const users = await getRepository(User).findOne(id);
+
+    return res.json(users);
+  }
+
   async create(req: Request, res: Response): Promise<Response> {
     const user = getRepository(User).create(req.body);
 
